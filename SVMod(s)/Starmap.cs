@@ -15,12 +15,15 @@ namespace ModdedPack1
         #region Required properties
         public override string DisplayName => "Starmap";
 
-        public override string Description => "When the encounter begins, give <b><color=#FFBF00>Starry</color></b> to a random card for every 5 cards in your deck.";
+        public override string Description => "When the encounter begins, give <font=\"StarvadersGun-Regular SDF\"><size=150%><voffset=-0.11em>Starry</i></font></b></smallcaps></color></size></voffset> to a random card for every 5 cards in your deck.";
 
         public override ClassName Class => ClassName.UniquePack;
 
         public override Rarity Rarity => Rarity.Common;
         #endregion
+
+        // MoreInfo___ are the extra info panels that show up when you right click an object, use them if you want to make your modded items easier to comprehend for newer players, but usually not needed (as new players wouldn't start modded)
+        public override Il2CppCollections.HashSet<MoreInfoWordName> MoreInfoWords => new HashSet<MoreInfoWordName>() { MoreInfoWordName.Component, ModContentManager.GetModMoreInfoName("Starry") }.ToILCPP();
 
         // This allows common artifacts to be in that one special encounter
         public override bool CanBeDuplicated => true;

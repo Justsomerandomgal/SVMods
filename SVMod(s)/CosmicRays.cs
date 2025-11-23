@@ -23,6 +23,9 @@ namespace ModdedPack1
         public override Rarity Rarity => Rarity.Legendary;
         #endregion
 
+        // MoreInfo___ are the extra info panels that show up when you right click an object, use them if you want to make your modded items easier to comprehend for newer players, but usually not needed (as new players wouldn't start modded)
+        public override Il2CppCollections.HashSet<MoreInfoWordName> MoreInfoWords => new HashSet<MoreInfoWordName>() { ModContentManager.GetModMoreInfoName("Starcycle") }.ToILCPP();
+
         // This card doesn't need a mech to be played (only really applicable for keeper)
         public override bool RequiresPlayerEntity => false;
 

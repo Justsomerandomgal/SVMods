@@ -23,7 +23,7 @@ namespace ModdedPack1
         #endregion
 
         // MoreInfo___ are the extra info panels that show up when you right click an object, use them if you want to make your modded items easier to comprehend for newer players, but usually not needed (as new players wouldn't start modded)
-        public override Il2CppCollections.HashSet<MoreInfoWordName> MoreInfoWords => new HashSet<MoreInfoWordName>() { MoreInfoWordName.Purge, MoreInfoWordName.Shield }.ToILCPP();
+        public override Il2CppCollections.HashSet<MoreInfoWordName> MoreInfoWords => new HashSet<MoreInfoWordName>() { MoreInfoWordName.Purge, MoreInfoWordName.Shield, ModContentManager.GetModMoreInfoName("Starcycle") }.ToILCPP();
 
         public override bool RequiresPlayerEntity => false;
 

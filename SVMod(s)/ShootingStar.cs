@@ -14,7 +14,7 @@ namespace ModdedPack1
         #region Required properties
         public override string DisplayName => "Shooting Star";
 
-        public override string Description => "Strike any tile twice.\nUpgrade a random card in your hand with <b><color=#FFBF00>Starry</color></b>.\nPurge this card.";
+        public override string Description => "Strike any tile twice.\nUpgrade a random card in your hand with <font=\"StarvadersGun-Regular SDF\"><size=150%><voffset=-0.11em>Starry</i></font></b></smallcaps></color></size></voffset>.\nPurge this card.";
 
         public override Il2CppCollections.HashSet<CardTrait> Traits => new HashSet<CardTrait>() { CardTrait.Attack, CardTrait.Tactic }.ToILCPP();
 
@@ -25,7 +25,7 @@ namespace ModdedPack1
         #endregion
 
         // MoreInfo___ are the extra info panels that show up when you right click an object, use them if you want to make your modded items easier to comprehend for newer players, but usually not needed (as new players wouldn't start modded)
-        public override Il2CppCollections.HashSet<MoreInfoWordName> MoreInfoWords => new HashSet<MoreInfoWordName>() { MoreInfoWordName.Purge }.ToILCPP();
+        public override Il2CppCollections.HashSet<MoreInfoWordName> MoreInfoWords => new HashSet<MoreInfoWordName>() { MoreInfoWordName.Purge, MoreInfoWordName.Component, ModContentManager.GetModMoreInfoName("Starry") }.ToILCPP();
 
         public override bool IsPurged => true;
 
