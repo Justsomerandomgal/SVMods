@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/HistoryPack
+/HistoryPack/Core.cs
+/HistoryPack/Grail.cs
+/HistoryPack/HistoryPack.csproj
+/HistoryPack/SteamMachine.cs
+/HistoryPack/SteamMachineTask.cs
