@@ -8,44 +8,38 @@ using SVModHelper.ModContent;
 
 namespace HistoryPack
 {
-    internal class Grail : AModArtifact
+    internal class HolyGrenade : AModArtifact
     {
         #region Required properties
-        public override string DisplayName => "Grail";
+        public override string DisplayName => "Holy Hand Grenade";
 
-        public override string Description => "On every even turn, draw a card. Lose this modifier at the end of the encounter";
+        public override string Description => "When your turn ends, strike a random <nobr><sprite=\"TextIcons\" name=\"Shield\"><b><color=#FFBF00> Shield</color></b></nobr>-less invader.\n";
 
         public override ClassName Class => ClassName.UniquePack;
 
-        public override Rarity Rarity => Rarity.Modifier;
+        // This is technically a modifier, but because neither IsEncounterModifier or IsCurseModifier is set to true it won't show up as a modifier through the normal way
+        public override Rarity Rarity => Rarity.Rare;
         #endregion
-
-        // This allows common artifacts to be in that one special encounter
-        public override bool CanBeDuplicated => true;
 
         // This function defines when and what this artifact does
         public override Il2CppCollections.List<TriggerEffect> GetTriggerEffects(OnCreateIDValue artifactID)
         {
-            // The trigger of an artifact, in this case: Before every task, if the task is StartTurnTask and the artifact is not used
+            // The trigger of an artifact, in this case: After every task, if the task is EndTurnTask
             List<Il2CppSystem.ValueTuple<Trigger, ACondition>> triggerConditions = new()
             {
-                new (Trigger.PostTask, new AndCondition(
-                    new IsTypeCondition<StartTurnTask>(new RunningTaskValue()),
-                    new IsEvenCondition (new TurnNumberValue())))
-
+                new (Trigger.PreTask, new IsTypeCondition<EndTurnTask>(new RunningTaskValue()))
             };
 
-            // The tasks to perform if triggered, ProcessArtifactTask makes the image of the artifact flash and display "used" on top of it
+            // The tasks to perform if triggered, ProcessArtifactTask makes the image of the artifact flash
             List<ATask> triggerTasks = new List<ATask>()
             {
                 new ProcessArtifactTask(artifactID),
-                new DrawTopDrawPileTask(),
+                new StrikeRandomShieldlessInvaderTask()
             };
 
             return new List<TriggerEffect>()
             {
                 new TriggerEffect(triggerConditions.ToILCPP(), triggerTasks.ToILCPP())
-                
             }.ToILCPP();
         }
     }

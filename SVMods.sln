@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstronomyPack", "SVMod(s)\A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HistoryPack", "HistoryPack\HistoryPack.csproj", "{1BD6DA99-ABBA-4D18-8D6F-FDEF584C7312}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalePack", "SalePack\SalePack.csproj", "{B53DE53E-AC2E-4EED-A117-EF9F7CEA2E99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1BD6DA99-ABBA-4D18-8D6F-FDEF584C7312}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BD6DA99-ABBA-4D18-8D6F-FDEF584C7312}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BD6DA99-ABBA-4D18-8D6F-FDEF584C7312}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B53DE53E-AC2E-4EED-A117-EF9F7CEA2E99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B53DE53E-AC2E-4EED-A117-EF9F7CEA2E99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B53DE53E-AC2E-4EED-A117-EF9F7CEA2E99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B53DE53E-AC2E-4EED-A117-EF9F7CEA2E99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

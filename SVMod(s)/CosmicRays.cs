@@ -23,6 +23,9 @@ namespace ModdedPack1
         public override Rarity Rarity => Rarity.Legendary;
         #endregion
 
+        // Hidden Traits define some things that other cards and artifacts can work around, for example, random is relevant for lucky dice and road trip
+        public override Il2CppCollections.HashSet<CardTrait> HiddenTraits => new HashSet<CardTrait>() { CardTrait.Random }.ToILCPP();
+
         // MoreInfo___ are the extra info panels that show up when you right click an object, use them if you want to make your modded items easier to comprehend for newer players, but usually not needed (as new players wouldn't start modded)
         public override Il2CppCollections.HashSet<MoreInfoWordName> MoreInfoWords => new HashSet<MoreInfoWordName>() { ModContentManager.GetModMoreInfoName("Starcycle") }.ToILCPP();
 

@@ -13,7 +13,7 @@ namespace ModdedPack1
         #region Required properties
         public override string DisplayName => "Photonic Gift";
 
-        public override string Description => "Give a <nobr><sprite=\"TextIcons\" name=\"Shield\"><b><color=#FFBF00> Shield</color></b></nobr>-less invader a <nobr><sprite=\"TextIcons\" name=\"Shield\"><b><color=#FFBF00> Shield</color></b></nobr> and gain 3000 <nobr><sprite=\"TextIcons\" name=\"Stars\"><b><color=#FFBF00> Stars</color></b></nobr>.\nPurge this card.";
+        public override string Description => "Give a <nobr><sprite=\"TextIcons\" name=\"Shield\"><b><color=#FFBF00> Shield</color></b></nobr>-less invader a <nobr><sprite=\"TextIcons\" name=\"Shield\"><b><color=#FFBF00> Shield</color></b></nobr> and gain 2500 <nobr><sprite=\"TextIcons\" name=\"Stars\"><b><color=#FFBF00> Stars</color></b></nobr>.\nPurge this card.";
 
         public override Il2CppCollections.HashSet<CardTrait> Traits => new HashSet<CardTrait>() { CardTrait.Tactic }.ToILCPP();
 
@@ -31,15 +31,15 @@ namespace ModdedPack1
 
         public override int ClassBaseCost => 1;
 
-        // This card is a bit more tricky with it's components, so we just use our own group of components that do work well with this card (including mirror (AKA replicating) because funnies :]  )
-        public override Il2CppCollections.HashSet<ComponentName> AllowedComponentNames => new HashSet<ComponentName>() { ComponentName.TacticalPlus, ComponentName.Replicating, ComponentName.Boosted, ComponentName.Risky }.ToILCPP();
+        // This card is a bit more tricky with it's components, so we just use our own group of components that do work well with this card
+        public override Il2CppCollections.HashSet<ComponentName> AllowedComponentNames => new HashSet<ComponentName>() { ComponentName.TacticalPlus, ComponentName.Boosted, ComponentName.Risky }.ToILCPP();
 
         // List of tasks to perform when played
         public override Il2CppCollections.List<ATask> GetPostSelectionTaskList(OnCreateIDValue cardID)
         {
             Il2CppCollections.List<ATask> taskList = new();
             taskList.Add(new ShieldTileEffectTask(new TargetValue(), true));
-            taskList.Add(new EncounterValueOperationTask(EncounterValue.StarBucks, Operation.Add, 30, true));
+            taskList.Add(new EncounterValueOperationTask(EncounterValue.StarBucks, Operation.Add, 25, true));
 
             return taskList;
         }

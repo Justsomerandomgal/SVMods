@@ -39,11 +39,10 @@ namespace ModdedPack1
             
             int amountToAdd = cards.Count / 5;
             Melon<Core>.Logger.Msg("Adding components to " + amountToAdd + " eligible cards.");
-            Random r = new();
             if (amountToAdd > 0)
                 for (int i = 0; i < amountToAdd && cardsWithoutComponents.Count > 0; i++)
                 {
-                    int target = r.Next(cardsWithoutComponents.Count);
+                    int target = UnityEngine.Random.RandomRangeInt(0, cardsWithoutComponents.Count);
                     CardModel card = cardsWithoutComponents[target];
 
                     Melon<Core>.Logger.Msg("Adding component...");

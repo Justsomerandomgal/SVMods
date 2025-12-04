@@ -14,7 +14,7 @@ namespace ModdedPack1
         #region Required properties
         public override string DisplayName => "Shooting Star";
 
-        public override string Description => "Strike any tile twice.\nUpgrade a random card in your hand with <font=\"StarvadersGun-Regular SDF\"><size=150%><voffset=-0.11em>Starry</i></font></b></smallcaps></color></size></voffset>.\nPurge this card.";
+        public override string Description => "Strike any entity and push it 1 tile in a random direction.\nUpgrade a random card in your hand with <font=\"StarvadersGun-Regular SDF\"><size=150%><voffset=-0.11em>Starry</i></font></b></smallcaps></color></size></voffset>.\nPurge this card.";
 
         public override Il2CppCollections.HashSet<CardTrait> Traits => new HashSet<CardTrait>() { CardTrait.Attack, CardTrait.Tactic }.ToILCPP();
 
@@ -40,10 +40,7 @@ namespace ModdedPack1
         public override Il2CppCollections.List<ATask> GetPostSelectionTaskList(OnCreateIDValue cardID)
         {
             Il2CppCollections.List<ATask> taskList = new();
-            taskList.Add(new StrikeTileEffectTask(new TargetValue()));
-            taskList.Add(new StrikeTileEffectTask(new TargetValue()));
             taskList.Add(new ShootingStarTask().Convert());
-
             return taskList;
         }
 
@@ -52,8 +49,10 @@ namespace ModdedPack1
         {
             return new List<Selection>()
             {
-                new Selection(
-                    new AndCondition(new IsTypeCondition<Coord>(new TargetValue())))
+                new Selection(new AndCondition(
+                    new IsTypeCondition<Coord>(new TargetValue()), 
+                    new NotCondition(new IsCoordEmptyCondition(new TargetValue()))
+                ))
             }.ToILCPP();
         }
     }

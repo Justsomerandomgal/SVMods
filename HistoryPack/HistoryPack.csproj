@@ -13,6 +13,24 @@
 		<LangVersion>latest</LangVersion>
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
+	<ItemGroup>
+	  <None Remove="AncientCoin.png" />
+	  <None Remove="Archeology.png" />
+	  <None Remove="Fossil.png" />
+	  <None Remove="Garment.png" />
+	  <None Remove="Goblet.png" />
+	  <None Remove="Grenade.png" />
+	  <None Remove="HistoryPack.png" />
+	  <None Remove="HolyGrenade.png" />
+	  <None Remove="JunkBorder.png" />
+	  <None Remove="Obituary.png" />
+	  <None Remove="PhilStone.png" />
+	  <None Remove="Reliquary.png" />
+	  <None Remove="Revolution.png" />
+	  <None Remove="ShellShock.png" />
+	  <None Remove="SpiceTrade.png" />
+	  <None Remove="SteamEngine.png" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<Reference Include="Assembly-CSharp-firstpass">
@@ -399,10 +417,48 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Compile Include="Archeology.cs" />
 		<Compile Include="Core.cs" />
-		<Compile Include="Grail.cs" />
-		<Compile Include="SteamMachine.cs" />
-		<Compile Include="SteamMachineTask.cs" />
+		<Compile Include="Fossil.cs" />
+		<Compile Include="HistoryPack.cs" />
+		<Compile Include="Obituary.cs" />
+		<Compile Include="ObituaryTasks.cs" />
+		<Compile Include="Relics\Garment.cs" />
+		<Compile Include="Relics\Goblet.cs" />
+		<Compile Include="Relics\Grenade.cs" />
+		<Compile Include="Relics\Stone.cs" />
+		<Compile Include="Relics\Upgraded Relics\AncientCoin.cs" />
+		<Compile Include="Relics\Upgraded Relics\HolyGrail.cs" />
+		<Compile Include="Relics\Upgraded Relics\HolyGrenade.cs" />
+		<Compile Include="Relics\Upgraded Relics\PhilStone.cs" />
+		<Compile Include="Reliquary.cs" />
+		<Compile Include="SpiceTrade.cs" />
+		<Compile Include="Revolution.cs" />
+		<Compile Include="RevolutionTask.cs" />
+		<Compile Include="ShellShock.cs" />
+		<Compile Include="ShellShockTask.cs" />
+		<Compile Include="SteamEngine.cs" />
+		<Compile Include="GainRelicTask.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="AncientCoin.png" />
+	  <EmbeddedResource Include="Archeology.png" />
+	  <EmbeddedResource Include="Fossil.png" />
+	  <EmbeddedResource Include="Garment.png" />
+	  <EmbeddedResource Include="Goblet.png" />
+	  <EmbeddedResource Include="Grenade.png" />
+	  <EmbeddedResource Include="HistoryPack.png" />
+	  <EmbeddedResource Include="HolyGrail.png" />
+	  <EmbeddedResource Include="HolyGrenade.png" />
+	  <EmbeddedResource Include="Obituary.png" />
+	  <EmbeddedResource Include="PhilStone.png" />
+	  <EmbeddedResource Include="Reliquary.png" />
+	  <EmbeddedResource Include="Revolution.png" />
+	  <EmbeddedResource Include="SpiceTrade.png" />
+	  <EmbeddedResource Include="Stone.png" />
+	  <EmbeddedResource Include="ShellShock.png" />
+	  <EmbeddedResource Include="SteamEngine.png" />
 	</ItemGroup>
 	
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">

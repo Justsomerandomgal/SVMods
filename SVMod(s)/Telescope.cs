@@ -15,7 +15,7 @@ namespace ModdedPack1
         #region Required properties
         public override string DisplayName => "Telescope";
 
-        public override string Description => "When your turn begins, <nobr><sprite=\"TextIcons\" name=\"Stars\"><b><color=#FFBF00> Starcycle</color></b></nobr> 1500.\nOn spend, gain a <b><color=#FFBF00>Shooting Star</color></b> in your hand.";
+        public override string Description => "When your turn begins, <nobr><sprite=\"TextIcons\" name=\"Stars\"><b><color=#FFBF00> Starcycle</color></b></nobr> 1300.\nOn spend, gain a <font=\"StarvadersGun-Regular SDF\"><size=150%><voffset=-0.11em>Shooting Star</i></font></b></smallcaps></color></size></voffset> in your hand.";
 
         public override ClassName Class => ClassName.UniquePack;
 
@@ -24,10 +24,8 @@ namespace ModdedPack1
 
         // MoreInfo___ are the extra info panels that show up when you right click an object, use them if you want to make your modded items easier to comprehend for newer players, but usually not needed (as new players wouldn't start modded)
         public override Il2CppCollections.HashSet<MoreInfoWordName> MoreInfoWords => new HashSet<MoreInfoWordName>() { ModContentManager.GetModMoreInfoName("Starcycle") }.ToILCPP();
-        public override Il2CppCollections.HashSet<CardName> MoreInfoCards => new HashSet<CardName>()
-        {
-            new ShootingStar().CardName
-        }.ToILCPP();
+        
+        public override Il2CppCollections.HashSet<CardName> MoreInfoCards => new HashSet<CardName>() { ModContentManager.GetModCardName<ShootingStar>() }.ToILCPP();
 
         // This function defines when and what this artifact does
         public override Il2CppCollections.List<TriggerEffect> GetTriggerEffects(OnCreateIDValue artifactID)
@@ -35,15 +33,14 @@ namespace ModdedPack1
             // The trigger of an artifact, in this case: After every task, if the task is StartTurnTask
             List<Il2CppSystem.ValueTuple<Trigger, ACondition>> triggerConditions = new()
             {
-                new (Trigger.PostTask, new AndCondition(
-                    new IsTypeCondition<StartTurnTask>(new RunningTaskValue())))
+                new (Trigger.PostTask, new IsTypeCondition<StartTurnTask>(new RunningTaskValue()))
             };
 
             // The tasks to perform if triggered, ProcessArtifactTask makes the image of the artifact flash
             List<ATask> triggerTasks = new List<ATask>()
             {
                 new ProcessArtifactTask(artifactID),
-                new StarcycleTask(15, new List<ATask>() { new CreateCardTask((int)ModContentManager.GetModCardName<ShootingStar>(), Pile: Pile.Hand, rarity: new()) }.ToILCPP()).Convert()
+                new StarcycleTask(13, new List<ATask>() { new CreateCardTask((int)ModContentManager.GetModCardName<ShootingStar>(), Pile: Pile.Hand, rarity: new()) }.ToILCPP()).Convert()
             };
 
             return new List<TriggerEffect>()

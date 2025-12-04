@@ -14,7 +14,7 @@ namespace ModdedPack1
         #region Required properties
         public override string DisplayName => "Orbit";
 
-        public override string Description =>  "<nobr><sprite=\"TextIcons\" name=\"Stars\"><b><color=#FFBF00> Starcycle</color></b></nobr> 300.\nOn spend, move up to 3 tiles.\nthis card has +2 <b><color=#FFBF00>Repeat</color></b>.";
+        public override string Description =>  "<nobr><sprite=\"TextIcons\" name=\"Stars\"><b><color=#FFBF00> Starcycle</color></b></nobr> 300.\nOn spend, move 1 to 3 tiles.\nthis card has +2 <b><color=#FFBF00>Repeat</color></b>.";
 
         public override Il2CppCollections.HashSet<CardTrait> Traits => new HashSet<CardTrait>() { CardTrait.Move }.ToILCPP();
 
@@ -24,7 +24,7 @@ namespace ModdedPack1
         #endregion
 
         // MoreInfo___ are the extra info panels that show up when you right click an object, use them if you want to make your modded items easier to comprehend for newer players, but usually not needed (as new players wouldn't start modded)
-        public override Il2CppCollections.HashSet<MoreInfoWordName> MoreInfoWords => new HashSet<MoreInfoWordName>() { MoreInfoWordName.Repeat }.ToILCPP();
+        public override Il2CppCollections.HashSet<MoreInfoWordName> MoreInfoWords => new HashSet<MoreInfoWordName>() { MoreInfoWordName.Repeat, ModContentManager.GetModMoreInfoName("Starcycle") }.ToILCPP();
 
         public override int RepeatAmount => 2;
 
