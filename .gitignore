@@ -358,12 +358,11 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-
-# Fody - auto-generated XML schema
-FodyWeavers.xsd
-/HistoryPack
-/HistoryPack/Core.cs
-/HistoryPack/Grail.cs
-/HistoryPack/HistoryPack.csproj
-/HistoryPack/SteamMachine.cs
-/HistoryPack/SteamMachineTask.cs
+/SalePack/SalePack.csproj
+/SalePack/Core.cs
+/SalePack/LostWallet.cs
+/SalePack/Steal.cs
+/SalePack/FlashSale.cs
+/SalePack/LostWalletTask.cs
+/SalePack/ShoppingCart.cs
+/SalePack/ShoppingCartItem.cs
