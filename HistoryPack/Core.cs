@@ -5,7 +5,7 @@ using MelonLoader;
 using SVModHelper;
 using SVModHelper.ModContent;
 
-[assembly: MelonInfo(typeof(HistoryPack.Core), "HistoryPack", "1.0", "RandomGuy", null)]
+[assembly: MelonInfo(typeof(HistoryPack.Core), "HistoryPack", "1.1", "RandomGuy", null)]
 [assembly: MelonGame("Pengonauts", "StarVaders")]
 
 namespace HistoryPack
