@@ -17,6 +17,7 @@ namespace HistoryPack
 
         public override ClassName Class => ClassName.UniquePack;
 
+        // Created artifacts don't exist and thus never show up
         public override Rarity Rarity => Rarity.Created;
         #endregion
 
@@ -33,7 +34,7 @@ namespace HistoryPack
             List<ATask> triggerTasks = new List<ATask>()
             {
                 new ProcessArtifactTask(artifactID),
-                new ConditionalTask (new RandomChanceCondition(0.5f), new List<ATask>{ new StrikeRandomShieldlessInvaderTask() }.ToILCPP())
+                new ConditionalTask (new RandomChanceCondition(0.5f), new List<ATask>{ new StrikeRandomShieldlessInvaderTask(GridFX.BombExplosion) }.ToILCPP())
             };
 
             return new List<TriggerEffect>()

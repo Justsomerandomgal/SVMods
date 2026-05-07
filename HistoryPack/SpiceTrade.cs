@@ -13,7 +13,7 @@ namespace HistoryPack
         #region Required properties
         public override string DisplayName => "Spice Trade";
 
-        public override string Description => "Gain a <b><color=#FFBF00>Relic</color></b> and create a <font=\"StarvadersGun-Regular SDF\"><size=150%><voffset=-0.11em>Tactical</i></font></b></smallcaps></color></size></voffset> copy of <font=\"StarvadersGun-Regular SDF\"><size=150%><voffset=-0.11em>Hallucination</i></font></b></smallcaps></color></size></voffset> in both your discard and draw pile.\nIncrease the cost of this card by 1 each time played.";
+        public override string Description => "Gain a <b><color=#FFBF00>Relic</color></b> and create a <font=\"StarvadersGun-Regular SDF\"><size=150%><voffset=-0.11em>Tactical</i></font></b></smallcaps></color></size></voffset> copy of <font=\"StarvadersGun-Regular SDF\"><size=150%><voffset=-0.11em>Hallucination</i></font></b></smallcaps></color></size></voffset> in both your draw pile.\nIncrease the cost of this card by 1 each time played.";
 
         public override Il2CppCollections.HashSet<CardTrait> Traits => new HashSet<CardTrait>() {  }.ToILCPP();
 
@@ -45,7 +45,6 @@ namespace HistoryPack
         {
             return new List<ATask> { 
                 new GainRelicTask(),
-                new CreateCardTask((int)CardName.Hallucination, ComponentName.Tactical, Pile: Pile.Discard, rarity: new()),
                 new CreateCardTask((int)CardName.Hallucination, ComponentName.Tactical, Pile: Pile.Draw, rarity: new()),
             }.ToILCPP();
         }

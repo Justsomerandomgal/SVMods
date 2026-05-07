@@ -15,7 +15,7 @@ namespace HistoryPack
         #region Required properties
         public override string DisplayName => "Obituary";
 
-        public override string Description => "Strike a random invader, this card has +1 <b><color=#FFBF00>Repeat</color></b> for every 7 <b><color=#FFBF00>Artifacts</color></b></nobr> you have.";
+        public override string Description => "Strike a random invader, this card has +1 <b><color=#FFBF00>Repeat</color></b> for every 6 <b><color=#FFBF00>Artifacts</color></b></nobr> you have.";
 
         public override Il2CppCollections.HashSet<CardTrait> Traits => new HashSet<CardTrait>() { CardTrait.Attack }.ToILCPP();
 
@@ -60,20 +60,7 @@ namespace HistoryPack
                 new (Trigger.PostTask, new IsCustomTaskOfIDCondition(new RunningTaskValue(), ModContentManager.GetModTaskID<GainRelicTask>())),
             };
 
-            List<Il2CppSystem.ValueTuple<Trigger, ACondition>> initConditions = new()
-            {
-                new(Trigger.PreTask, new AndCondition(
-                    new IsTypeCondition<StartTurnTask>(new RunningTaskValue()),
-                    new EqualsCondition(new TurnNumberValue(), 0)
-                ))
-            };
-
             // The tasks to perform if triggered
-            List <ATask> initTasks = new List<ATask>()
-            {
-                //new ObituaryTask(cardID).Convert()
-            };
-
             List<ATask> triggerTasks = new List<ATask>()
             {
                 new ObituaryTask2(cardID).Convert()
@@ -81,7 +68,6 @@ namespace HistoryPack
 
             return new List<TriggerEffect>()
             {
-                new TriggerEffect(initConditions.ToILCPP(), initTasks.ToILCPP()),
                 new TriggerEffect(triggerConditions.ToILCPP(), triggerTasks.ToILCPP())
             }.ToILCPP();
         }

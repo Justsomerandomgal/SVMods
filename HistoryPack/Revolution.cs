@@ -13,7 +13,7 @@ namespace HistoryPack
         #region Required properties
         public override string DisplayName => "Revolution";
 
-        public override string Description => "Move 1 to 4 tiles.\nIf you have 10 or more <b><color=#FFBF00>Artifacts</color></b></nobr>, reduce the cost of the next card you play by 1.";
+        public override string Description => "Move 1 to 4 tiles.\nIf you have 0 <b><color=#FFBF00>Relics</color></b></nobr> or this is the first turn, gain a <b><color=#FFBF00>Relic</color></b></nobr>.";
 
         public override Il2CppCollections.HashSet<CardTrait> Traits => new HashSet<CardTrait>() { CardTrait.Move }.ToILCPP();
 

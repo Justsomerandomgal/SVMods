@@ -20,7 +20,7 @@ namespace ModdedPack1
         public override Il2CppCollections.HashSet<CardName> cards => new HashSet<CardName>()
         {
             ModContentManager.GetModCardName<Orbit>(),
-            ModContentManager.GetModCardName<Consentrate>(),
+            ModContentManager.GetModCardName<Concentrate>(),
             ModContentManager.GetModCardName<PhotonicGift>(),
             ModContentManager.GetModCardName<StarPower>(),
             ModContentManager.GetModCardName<CosmicRays>()

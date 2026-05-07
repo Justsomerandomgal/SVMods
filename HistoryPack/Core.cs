@@ -25,7 +25,8 @@ namespace HistoryPack
         }
 
         // This is a section that was used for testing, this is way faster then trying to find your card/artifact every single time
-        /*protected override void LateRegisterMod()
+        /*
+        protected override void LateRegisterMod()
         {
             RegisterContentMod(new PilotModification(PilotName.Roxy)
             {
@@ -47,6 +48,7 @@ namespace HistoryPack
                 }.ToILCPP()
             });
         }*/
+        
 
         public static int ArtifactCount(Il2CppSystem.Collections.Generic.Dictionary<ID, ArtifactView> views)
         {
@@ -54,6 +56,14 @@ namespace HistoryPack
             foreach (ArtifactView view in views.Values)
                 if (view.ArtifactModel.Rarity == Rarity.Modifier)
                     count--;
+            return count;
+        }
+        public static int RelicCount(Il2CppSystem.Collections.Generic.Dictionary<ID, ArtifactView> views)
+        {
+            int count = 0;
+            foreach (ArtifactView view in views.Values)
+                if (view.ArtifactModel.Rarity == Rarity.Created || view.ArtifactModel.Rarity == Rarity.Rare)
+                    count++;
             return count;
         }
     }

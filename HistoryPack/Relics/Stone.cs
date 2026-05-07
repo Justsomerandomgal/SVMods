@@ -17,6 +17,7 @@ namespace HistoryPack
 
         public override ClassName Class => ClassName.UniquePack;
 
+        // Created artifacts don't exist and thus never show up
         public override Rarity Rarity => Rarity.Created;
         #endregion
 

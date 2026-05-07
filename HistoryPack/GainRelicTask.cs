@@ -54,7 +54,8 @@ namespace HistoryPack
             }
             
             int r = UnityEngine.Random.RandomRangeInt(0, 4);
-            bool Upgrade = (UnityEngine.Random.RandomRangeInt(0,3) != 0) && taskInstance.EncounterModel.ArtifactIDs.ContainsKey(ModContentManager.GetModArtifactName<Reliquary>());
+            int amount = Core.RelicCount(taskInstance.EncounterView.ArtifactViewDict);
+            bool Upgrade = (amount < 3) && taskInstance.EncounterModel.ArtifactIDs.ContainsKey(ModContentManager.GetModArtifactName<Reliquary>());
             if (Upgrade)
             {
                 ArtifactName[] UpgradedRelics = { ModContentManager.GetModArtifactName<HolyGrail>(), ModContentManager.GetModArtifactName<PhilStone>(), ModContentManager.GetModArtifactName<HolyGrenade>(), ModContentManager.GetModArtifactName<AncientCoin>() };

@@ -15,7 +15,7 @@ namespace ModdedPack1
         #region Required properties
         public override string DisplayName => "Telescope";
 
-        public override string Description => "When your turn begins, <nobr><sprite=\"TextIcons\" name=\"Stars\"><b><color=#FFBF00> Starcycle</color></b></nobr> 1300.\nOn spend, gain a <font=\"StarvadersGun-Regular SDF\"><size=150%><voffset=-0.11em>Shooting Star</i></font></b></smallcaps></color></size></voffset> in your hand.";
+        public override string Description => "When your turn begins, <nobr><sprite=\"TextIcons\" name=\"Stars\"><b><color=#FFBF00> Starcycle</color></b></nobr> 1000.\nOn spend, gain a <font=\"StarvadersGun-Regular SDF\"><size=150%><voffset=-0.11em>Shooting Star</i></font></b></smallcaps></color></size></voffset> in your hand.";
 
         public override ClassName Class => ClassName.UniquePack;
 
@@ -40,7 +40,7 @@ namespace ModdedPack1
             List<ATask> triggerTasks = new List<ATask>()
             {
                 new ProcessArtifactTask(artifactID),
-                new StarcycleTask(13, new List<ATask>() { new CreateCardTask((int)ModContentManager.GetModCardName<ShootingStar>(), Pile: Pile.Hand, rarity: new()) }.ToILCPP()).Convert()
+                new StarcycleTask(10, new List<ATask>() { new CreateCardTask((int)ModContentManager.GetModCardName<ShootingStar>(), Pile: Pile.Hand, rarity: new()) }.ToILCPP()).Convert()
             };
 
             return new List<TriggerEffect>()

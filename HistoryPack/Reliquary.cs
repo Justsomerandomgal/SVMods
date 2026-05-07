@@ -13,7 +13,7 @@ namespace HistoryPack
         #region Required properties
         public override string DisplayName => "Reliquary";
 
-        public override string Description => "When the encounter begins, gain a <b><color=#FFBF00>Relic</color></b>.\n<b><color=#FFBF00>Relics</color></b> have a 2 in 3 chance to be upgraded to be more powerful, this chance can not be modified.";
+        public override string Description => "When the encounter begins, gain a <b><color=#FFBF00>Relic</color></b>.\nThe first 3 <b><color=#FFBF00>Relics</color></b> gained are upgraded to be more powerful.";
 
         public override ClassName Class => ClassName.UniquePack;
 

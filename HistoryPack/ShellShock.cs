@@ -13,7 +13,7 @@ namespace HistoryPack
         #region Required properties
         public override string DisplayName => "Shell Shock";
 
-        public override string Description => "Strike all adjacent tiles, this card gains +1 range for every 10 <b><color=#FFBF00>Artifacts</color></b></nobr> you have.";
+        public override string Description => "Strike all adjacent tiles, this card gains +1 range for every 8 <b><color=#FFBF00>Artifacts</color></b></nobr> you have.";
 
         public override Il2CppCollections.HashSet<CardTrait> Traits => new HashSet<CardTrait>() { CardTrait.Attack }.ToILCPP();
 

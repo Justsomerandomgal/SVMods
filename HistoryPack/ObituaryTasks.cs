@@ -15,7 +15,7 @@ namespace HistoryPack
 {
     internal class ObituaryTask : AModTask
     {
-        // This task gives a given card +1 repeat for every 7 artifacts you have
+        // This task gives a given card +1 repeat for every 6 artifacts you have
         public ObituaryTask()
         {
 
@@ -37,7 +37,7 @@ namespace HistoryPack
             Il2CppSystem.Object cardID = taskInstance.GetArg<Il2CppSystem.Object>(ArgKey.CardID);
             int amount = Core.ArtifactCount(taskInstance.EncounterView.ArtifactViewDict);
             Melon<Core>.Logger.Msg("Current artifact count: " + amount);
-            for (int i = 0; i < amount / 7; i++)
+            for (int i = 0; i < amount / 6; i++)
             {
                 Melon<Core>.Logger.Msg("Adding +1 Repeat");
                 yield return taskInstance.TaskEngine.ProcessTask(new AddPlayCardModTask(new PlayCardModifierModel(new EqualsCondition(new TargetValue(), cardID), ArgKey.RepeatAmount, Operation.Add, 1))).Cast<Il2CppSystem.Object>();
@@ -46,7 +46,7 @@ namespace HistoryPack
     }
     internal class ObituaryTask2 : AModTask
     {
-        // This task gives a given card +1 repeat if you have a multiple of 7 artifacts
+        // This task gives a given card +1 repeat if you have a multiple of 6 artifacts
         public ObituaryTask2()
         {
 
@@ -68,7 +68,7 @@ namespace HistoryPack
             Il2CppSystem.Object cardID = taskInstance.GetArg<Il2CppSystem.Object>(ArgKey.CardID);
             int amount = Core.ArtifactCount(taskInstance.EncounterView.ArtifactViewDict);
             Melon<Core>.Logger.Msg("Current artifact count: " + amount);
-            if (amount % 7 == 0)
+            if (amount % 6 == 0)
             {
                 Melon<Core>.Logger.Msg("Adding +1 Repeat");
                 yield return taskInstance.TaskEngine.ProcessTask(new AddPlayCardModTask(new PlayCardModifierModel(new EqualsCondition(new TargetValue(), cardID), ArgKey.RepeatAmount, Operation.Add, 1))).Cast<Il2CppSystem.Object>();

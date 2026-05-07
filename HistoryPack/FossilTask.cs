@@ -13,12 +13,12 @@ using SVModHelper.ModContent;
 
 namespace HistoryPack
 {
-    internal class ShellShockTask : AModTask
+    internal class FossilTask : AModTask
     {
-        // This task strikes adjacent tiles and has +1 range for every 8 artifacts
-        public ShellShockTask()
+        // This task strikes adjacent tiles and has +1 range for every 10 artifacts
+        public FossilTask()
         {
-            
+
         }
 
         public override IEnumerator Execute(ATask taskInstance)
@@ -29,7 +29,9 @@ namespace HistoryPack
             int amount = Core.ArtifactCount(taskInstance.EncounterView.ArtifactViewDict);
             if (!taskInstance.IsPreviewModeView)
                 Melon<Core>.Logger.Msg("Current artifact count: " + amount);
-            yield return taskInstance.TaskEngine.ProcessTask(new DetonationTask(new PlayerCoordValue(), DetonationType.Radius, radius: 0 + (amount / 8), gridFX: GridFX.BombExplosion)).Cast<Il2CppSystem.Object>();
+            if (amount > 5) 
+            for (int i = 0; i < amount / 6; i++)
+                yield return taskInstance.TaskEngine.ProcessTask(new CreateCardTask((int)ModContentManager.GetModCardName<Archeology>(), ComponentName.Sandy, rarity: new())).Cast<Il2CppSystem.Object>();
         }
     }
 }

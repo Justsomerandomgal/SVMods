@@ -431,7 +431,9 @@
 		<Compile Include="Relics\Upgraded Relics\HolyGrail.cs" />
 		<Compile Include="Relics\Upgraded Relics\HolyGrenade.cs" />
 		<Compile Include="Relics\Upgraded Relics\PhilStone.cs" />
+		<Compile Include="Relics\Upgraded Relics\AncientCoinTasks.cs" />
 		<Compile Include="Reliquary.cs" />
+		<Compile Include="FossilTask.cs" />
 		<Compile Include="SpiceTrade.cs" />
 		<Compile Include="Revolution.cs" />
 		<Compile Include="RevolutionTask.cs" />

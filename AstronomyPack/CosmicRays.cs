@@ -45,10 +45,10 @@ namespace ModdedPack1
         {
             Il2CppCollections.List<ATask> taskList = new();
             Il2CppCollections.List<ATask> onSpendList = new();
-            onSpendList.Add(new StrikeRandomInvaderTask());
-            onSpendList.Add(new StrikeRandomInvaderTask());
-            onSpendList.Add(new StrikeRandomInvaderTask());
-            onSpendList.Add(new StrikeRandomInvaderTask());
+            onSpendList.Add(new StrikeRandomInvaderTask(GridFX.MeteorFall));
+            onSpendList.Add(new StrikeRandomInvaderTask(GridFX.MeteorFall));
+            onSpendList.Add(new StrikeRandomInvaderTask(GridFX.MeteorFall));
+            onSpendList.Add(new StrikeRandomInvaderTask(GridFX.MeteorFall));
             onSpendList.Add(new DrawTopDrawPileTask());
             taskList.Add(new StarcycleTask(20, onSpendList).Convert());
 

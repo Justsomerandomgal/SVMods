@@ -13,11 +13,11 @@ namespace HistoryPack
         #region Required properties
         public override string DisplayName => "Ancient Coin";
 
-        public override string Description => "When your turn ends, upgrade a random card in hand with a random <b><color=#FFBF00>Component</color></b>.";
+        public override string Description => "Retain a random <b><color=#FFBF00>Component</color></b>-less card in hand when your turn ends, then upgrade a random card in hand with a random <b><color=#FFBF00>Component</color></b>.";
 
         public override ClassName Class => ClassName.UniquePack;
 
-        // This is technically a modifier, but because neither IsEncounterModifier or IsCurseModifier is set to true it won't show up as a modifier through the normal way
+        // Rare artifacts don't exist and thus never show up
         public override Rarity Rarity => Rarity.Rare;
         #endregion
 
@@ -37,12 +37,26 @@ namespace HistoryPack
             List<ATask> triggerTasks = new List<ATask>()
             {
                 new ProcessArtifactTask(artifactID),
+                new AncientCoinTask().Convert()
+            };
+
+            TriggerEffect Before = new TriggerEffect(triggerConditions.ToILCPP(), triggerTasks.ToILCPP());
+
+            triggerConditions = new()
+            {
+                new (Trigger.PostTask, new IsTypeCondition<EndTurnTask>(new RunningTaskValue()))
+            };
+
+            // The tasks to perform if triggered, ProcessArtifactTask makes the image of the artifact flash
+            triggerTasks = new List<ATask>()
+            {
+                new AncientCoinTask2().Convert(),
                 new UpgradeRandomCardInHandTask()
             };
 
             return new List<TriggerEffect>()
             {
-                new TriggerEffect(triggerConditions.ToILCPP(), triggerTasks.ToILCPP())
+                Before, new TriggerEffect(triggerConditions.ToILCPP(), triggerTasks.ToILCPP())
             }.ToILCPP();
         }
     }

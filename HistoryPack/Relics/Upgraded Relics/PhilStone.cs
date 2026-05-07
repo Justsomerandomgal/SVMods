@@ -17,7 +17,7 @@ namespace HistoryPack
 
         public override ClassName Class => ClassName.UniquePack;
 
-        // This is technically a modifier, but because neither IsEncounterModifier or IsCurseModifier is set to true it won't show up as a modifier through the normal way
+        // Rare artifacts don't exist and thus never show up
         public override Rarity Rarity => Rarity.Rare;
         #endregion
 

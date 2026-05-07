@@ -13,7 +13,7 @@ namespace ModdedPack1
         #region Required properties
         public override string DisplayName => "Photonic Gift";
 
-        public override string Description => "Give a <nobr><sprite=\"TextIcons\" name=\"Shield\"><b><color=#FFBF00> Shield</color></b></nobr>-less invader a <nobr><sprite=\"TextIcons\" name=\"Shield\"><b><color=#FFBF00> Shield</color></b></nobr> and gain 2500 <nobr><sprite=\"TextIcons\" name=\"Stars\"><b><color=#FFBF00> Stars</color></b></nobr>.\nPurge this card.";
+        public override string Description => "Give a <nobr><sprite=\"TextIcons\" name=\"Shield\"><b><color=#FFBF00> Shield</color></b></nobr>-less invader a <nobr><sprite=\"TextIcons\" name=\"Shield\"><b><color=#FFBF00> Shield</color></b></nobr> and if you have less than 20000 <nobr><sprite=\"TextIcons\" name=\"Stars\"><b><color=#FFBF00> Stars</color></b></nobr>, gain 2500 <nobr><sprite=\"TextIcons\" name=\"Stars\"><b><color=#FFBF00> Stars</color></b></nobr>.\nPurge this card.";
 
         public override Il2CppCollections.HashSet<CardTrait> Traits => new HashSet<CardTrait>() { CardTrait.Tactic }.ToILCPP();
 
@@ -23,7 +23,7 @@ namespace ModdedPack1
         #endregion
 
         // MoreInfo___ are the extra info panels that show up when you right click an object, use them if you want to make your modded items easier to comprehend for newer players, but usually not needed (as new players wouldn't start modded)
-        public override Il2CppCollections.HashSet<MoreInfoWordName> MoreInfoWords => new HashSet<MoreInfoWordName>() { MoreInfoWordName.Purge, MoreInfoWordName.Shield, ModContentManager.GetModMoreInfoName("Starcycle") }.ToILCPP();
+        public override Il2CppCollections.HashSet<MoreInfoWordName> MoreInfoWords => new HashSet<MoreInfoWordName>() { MoreInfoWordName.Purge, MoreInfoWordName.Shield }.ToILCPP();
 
         public override bool RequiresPlayerEntity => false;
 
@@ -39,7 +39,7 @@ namespace ModdedPack1
         {
             Il2CppCollections.List<ATask> taskList = new();
             taskList.Add(new ShieldTileEffectTask(new TargetValue(), true));
-            taskList.Add(new EncounterValueOperationTask(EncounterValue.StarBucks, Operation.Add, 25, true));
+            taskList.Add(new PhotonicGiftTask().Convert());
 
             return taskList;
         }

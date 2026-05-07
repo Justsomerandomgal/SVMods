@@ -13,10 +13,11 @@ namespace HistoryPack
         #region Required properties
         public override string DisplayName => "Goblet";
 
-        public override string Description => "Draw +1 card on every even turn.";
+        public override string Description => "1 in 3 chance to draw +1 card every turn.";
 
         public override ClassName Class => ClassName.UniquePack;
 
+        // Created artifacts don't exist and thus never show up
         public override Rarity Rarity => Rarity.Created;
         #endregion
 
@@ -26,17 +27,14 @@ namespace HistoryPack
             // The trigger of an artifact, in this case: After every task, if the task is StartTurnTask and the turn number is even
             List<Il2CppSystem.ValueTuple<Trigger, ACondition>> triggerConditions = new()
             {
-                new (Trigger.PostTask, new AndCondition(
-                    new IsTypeCondition<StartTurnTask>(new RunningTaskValue()),
-                    new IsEvenCondition (new TurnNumberValue())
-                ))
+                new (Trigger.PostTask, new IsTypeCondition<StartTurnTask>(new RunningTaskValue()))
             };
 
             // The tasks to perform if triggered, ProcessArtifactTask makes the image of the artifact flash
             List<ATask> triggerTasks = new List<ATask>()
             {
                 new ProcessArtifactTask(artifactID),
-                new DrawTopDrawPileTask()
+                new ConditionalTask(new RandomChanceCondition(0.3333333f), new List<ATask>{ new DrawTopDrawPileTask() }.ToILCPP())
             };
 
             return new List<TriggerEffect>()

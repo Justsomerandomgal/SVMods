@@ -13,11 +13,11 @@ namespace HistoryPack
         #region Required properties
         public override string DisplayName => "Holy Hand Grenade";
 
-        public override string Description => "When your turn ends, strike a random <nobr><sprite=\"TextIcons\" name=\"Shield\"><b><color=#FFBF00> Shield</color></b></nobr>-less invader.\n";
+        public override string Description => "When your turn ends, strike a random invader.\n";
 
         public override ClassName Class => ClassName.UniquePack;
 
-        // This is technically a modifier, but because neither IsEncounterModifier or IsCurseModifier is set to true it won't show up as a modifier through the normal way
+        // Rare artifacts don't exist and thus never show up
         public override Rarity Rarity => Rarity.Rare;
         #endregion
 
@@ -34,7 +34,7 @@ namespace HistoryPack
             List<ATask> triggerTasks = new List<ATask>()
             {
                 new ProcessArtifactTask(artifactID),
-                new StrikeRandomShieldlessInvaderTask()
+                new StrikeRandomInvaderTask(GridFX.BombExplosion)
             };
 
             return new List<TriggerEffect>()

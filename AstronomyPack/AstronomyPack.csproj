@@ -15,7 +15,6 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Remove="AstronomyPack.png" />
-	  <None Remove="Consentrate.png" />
 	  <None Remove="CosmicRays.png" />
 	  <None Remove="Orbit.png" />
 	  <None Remove="PhotonicGift.png" />
@@ -415,13 +414,15 @@
 
 	<ItemGroup>
 		<Compile Include="AstronomyPack.cs" />
-		<Compile Include="Consentrate.cs" />
+		<Compile Include="Concentrate.cs" />
 		<Compile Include="CosmicRays.cs" />
 		<Compile Include="Orbit.cs" />
 		<Compile Include="PhotonicGift.cs" />
+		<Compile Include="StarPowerTask.cs" />
 		<Compile Include="ShootingStarTask.cs" />
 		<Compile Include="ShootingStar.cs" />
 		<Compile Include="Core.cs" />
+		<Compile Include="PhotonicGiftTask.cs" />
 		<Compile Include="Stargaze.cs" />
 		<Compile Include="Starmap.cs" />
 		<Compile Include="StarmapTask.cs" />
@@ -433,7 +434,7 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="AstronomyPack.png" />
-	  <EmbeddedResource Include="Consentrate.png" />
+	  <EmbeddedResource Include="Concentrate.png" />
 	  <EmbeddedResource Include="CosmicRays.png" />
 	  <EmbeddedResource Include="Orbit.png" />
 	  <EmbeddedResource Include="PhotonicGift.png" />

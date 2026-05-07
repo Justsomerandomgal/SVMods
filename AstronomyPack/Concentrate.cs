@@ -8,12 +8,12 @@ using SVModHelper.ModContent;
 
 namespace ModdedPack1
 {
-    internal class Consentrate : AModCard
+    internal class Concentrate : AModCard
     {
         #region Required properties
-        public override string DisplayName => "Consentrate";
+        public override string DisplayName => "Concentrate";
 
-        public override string Description => "<nobr><sprite=\"TextIcons\" name=\"Stars\"><b><color=#FFBF00> Starcycle</color></b></nobr> 1000.\nOn spend, strike a tile within 3 range, 2 times.";
+        public override string Description => "<nobr><sprite=\"TextIcons\" name=\"Stars\"><b><color=#FFBF00> Starcycle</color></b></nobr> 700.\nOn spend, strike a tile up to 3 tiles away twice.\nOr draw 1 card.";
 
         public override Il2CppCollections.HashSet<CardTrait> Traits => new HashSet<CardTrait>() { CardTrait.Attack }.ToILCPP();
 
@@ -40,21 +40,23 @@ namespace ModdedPack1
         {
             Il2CppCollections.List<ATask> taskList = new();
             Il2CppCollections.List<ATask> onSpendList = new();
-            onSpendList.Add(new StrikeTileEffectTask(new TargetValue()));
-            onSpendList.Add(new StrikeTileEffectTask(new TargetValue()));
-            taskList.Add(new StarcycleTask(10, onSpendList).Convert());
+            onSpendList.Add(new StrikeTileEffectTask(new TargetValue(), type: GridFX.MeteorFall));
+            onSpendList.Add(new StrikeTileEffectTask(new TargetValue(), type: GridFX.FireballExplosion));
+            taskList.Add(new ConditionalTask(new IsTypeCondition<ExtraSelectionModelID>(new TargetValue()), new List<ATask>{ new DrawTopDrawPileTask() }.ToILCPP(), new List<ATask>{ new StarcycleTask(7, onSpendList).Convert() }.ToILCPP()));
 
             return taskList;
         }
-
+        
         // The parameters the players selections need to satisfy to play this card, in this case, any tile in range 3
         public override Il2CppCollections.List<Selection> GetSelections(OnCreateIDValue cardID)
         {
             return new List<Selection>()
             {
                 new Selection(
+                    new OrCondition(
                     new AndCondition(new IsTypeCondition<Coord>(new TargetValue()),
-                    new DistanceCondition(new PlayerCoordValue(), new TargetValue(), 0, 3)))
+                        new DistanceCondition(new PlayerCoordValue(), new TargetValue(), 0, 3)),
+                    new ExtraSelectionCondition(new TargetValue())))
             }.ToILCPP();
         }
     }
